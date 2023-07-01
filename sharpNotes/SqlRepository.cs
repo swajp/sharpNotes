@@ -11,6 +11,7 @@ namespace sharpNotes
 {
     public static class SqlRepository
     {
+        public static string serverStatus;
         private static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=sharpNotes;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public static void SignupUser(string username, string password)
         {
@@ -21,39 +22,62 @@ namespace sharpNotes
             hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             salt = hmac.Key;
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = conn.CreateCommand())
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    cmd.CommandText = "INSERT INTO Users (Username, PasswordHash, PasswordSalt) VALUES (@username, @hash, @salt)";
-                    cmd.Parameters.AddWithValue("username", username);
-                    cmd.Parameters.AddWithValue("hash", hash);
-                    cmd.Parameters.AddWithValue("salt", salt);
-                    cmd.ExecuteNonQuery();
+                    conn.Open();
+                    try
+                    {
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.CommandText = "INSERT INTO Users (Username, PasswordHash, PasswordSalt) VALUES (@username, @hash, @salt)";
+                            cmd.Parameters.AddWithValue("username", username);
+                            cmd.Parameters.AddWithValue("hash", hash);
+                            cmd.Parameters.AddWithValue("salt", salt);
+                            cmd.ExecuteNonQuery();
+                        }
+                        conn.Close();
+                    }
+                    catch (Exception)
+                    {
+                        serverStatus = "Error";
+                        MessageBox.Show("Uživatel existuje!");
+                    }
                 }
-                conn.Close();
+            }
+            catch (Exception)
+            {
+                serverStatus = "Error";
+                MessageBox.Show("Chyba serveru!");
             }
         }
         public static User? GetUser(string username)
         {
             User? user = null;
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            try
             {
-                sqlConnection.Open();
-                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
                 {
-                    cmd.CommandText = "SELECT * FROM [Users] WHERE Username=@Username";
-                    cmd.Parameters.AddWithValue("Username", username);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    sqlConnection.Open();
+                    using (SqlCommand cmd = sqlConnection.CreateCommand())
                     {
-                        if (reader.Read())
+                        cmd.CommandText = "SELECT * FROM [Users] WHERE Username=@Username";
+                        cmd.Parameters.AddWithValue("Username", username);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            user = new User((int)reader["Id"], reader["Username"].ToString(), (byte[])reader["PasswordHash"], (byte[])reader["PasswordSalt"]);
+                            if (reader.Read())
+                            {
+                                user = new User((int)reader["Id"], reader["Username"].ToString(), (byte[])reader["PasswordHash"], (byte[])reader["PasswordSalt"]);
+                            }
                         }
                     }
+                    sqlConnection.Close();
                 }
-                sqlConnection.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Chyba serveru!");
             }
             return user;
         }

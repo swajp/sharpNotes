@@ -31,8 +31,15 @@ namespace sharpNotes
                 if (textBoxPassword.Text == textBoxPasswordAgain.Text)
                 {
                     SqlRepository.SignupUser(textBoxUsername.Text, textBoxPassword.Text);
-                    MessageBox.Show("Úspěšně zaregistorován!");
-                    DialogResult = DialogResult.OK;
+                    if (SqlRepository.serverStatus != "Error")
+                    {
+                        MessageBox.Show("Úspěšně zaregistorován!");
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
                 else
                 {

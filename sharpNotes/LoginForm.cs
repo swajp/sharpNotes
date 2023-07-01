@@ -42,10 +42,6 @@ namespace sharpNotes
                         MessageBox.Show("Špatně zadané heslo!");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Uživatel neexistuje!");
-                }
             }
             else
             {
