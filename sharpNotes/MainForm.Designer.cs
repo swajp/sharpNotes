@@ -38,6 +38,7 @@
             panel2 = new Panel();
             labelWelcome = new Label();
             panel3 = new Panel();
+            buttonRefresh = new Button();
             listViewNotes = new ListView();
             columnHeader1 = new ColumnHeader();
             panelNewNote = new Panel();
@@ -47,7 +48,6 @@
             textBoxText = new TextBox();
             label2 = new Label();
             textBoxTitle = new TextBox();
-            buttonRefresh = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -97,6 +97,7 @@
             buttonExit.Name = "buttonExit";
             buttonExit.Size = new Size(23, 38);
             buttonExit.TabIndex = 14;
+            buttonExit.TabStop = false;
             buttonExit.Text = "X";
             buttonExit.UseVisualStyleBackColor = false;
             buttonExit.Click += buttonExit_Click;
@@ -112,6 +113,7 @@
             buttonMinimize.Name = "buttonMinimize";
             buttonMinimize.Size = new Size(22, 38);
             buttonMinimize.TabIndex = 15;
+            buttonMinimize.TabStop = false;
             buttonMinimize.Text = "─";
             buttonMinimize.UseVisualStyleBackColor = false;
             buttonMinimize.Click += buttonMinimize_Click;
@@ -127,6 +129,7 @@
             buttonAddNote.Name = "buttonAddNote";
             buttonAddNote.Size = new Size(28, 28);
             buttonAddNote.TabIndex = 16;
+            buttonAddNote.TabStop = false;
             buttonAddNote.UseVisualStyleBackColor = false;
             buttonAddNote.Click += buttonAddNote_Click;
             // 
@@ -160,6 +163,21 @@
             panel3.Size = new Size(177, 422);
             panel3.TabIndex = 18;
             // 
+            // buttonRefresh
+            // 
+            buttonRefresh.BackColor = Color.Transparent;
+            buttonRefresh.BackgroundImage = Properties.Resources.material_symbols_refresh;
+            buttonRefresh.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonRefresh.FlatAppearance.BorderSize = 0;
+            buttonRefresh.FlatStyle = FlatStyle.Flat;
+            buttonRefresh.Location = new Point(145, 7);
+            buttonRefresh.Name = "buttonRefresh";
+            buttonRefresh.Size = new Size(23, 23);
+            buttonRefresh.TabIndex = 19;
+            buttonRefresh.TabStop = false;
+            buttonRefresh.UseVisualStyleBackColor = false;
+            buttonRefresh.Click += buttonRefresh_Click;
+            // 
             // listViewNotes
             // 
             listViewNotes.BorderStyle = BorderStyle.None;
@@ -167,12 +185,14 @@
             listViewNotes.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             listViewNotes.FullRowSelect = true;
             listViewNotes.GridLines = true;
+            listViewNotes.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             listViewNotes.Location = new Point(3, 3);
             listViewNotes.MultiSelect = false;
             listViewNotes.Name = "listViewNotes";
             listViewNotes.RightToLeftLayout = true;
             listViewNotes.Size = new Size(171, 416);
             listViewNotes.TabIndex = 0;
+            listViewNotes.TabStop = false;
             listViewNotes.UseCompatibleStateImageBehavior = false;
             listViewNotes.View = View.Details;
             listViewNotes.SelectedIndexChanged += listViewNotes_SelectedIndexChanged;
@@ -209,6 +229,7 @@
             buttonSaveNote.Name = "buttonSaveNote";
             buttonSaveNote.Size = new Size(23, 23);
             buttonSaveNote.TabIndex = 18;
+            buttonSaveNote.TabStop = false;
             buttonSaveNote.UseVisualStyleBackColor = false;
             buttonSaveNote.Click += buttonSaveNote_Click;
             // 
@@ -223,6 +244,7 @@
             buttonDeleteNote.Name = "buttonDeleteNote";
             buttonDeleteNote.Size = new Size(23, 23);
             buttonDeleteNote.TabIndex = 19;
+            buttonDeleteNote.TabStop = false;
             buttonDeleteNote.UseVisualStyleBackColor = false;
             buttonDeleteNote.Click += buttonDeleteNote_Click;
             // 
@@ -240,6 +262,7 @@
             // 
             // textBoxText
             // 
+            textBoxText.AcceptsTab = true;
             textBoxText.BorderStyle = BorderStyle.None;
             textBoxText.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxText.Location = new Point(13, 107);
@@ -268,20 +291,6 @@
             textBoxTitle.Name = "textBoxTitle";
             textBoxTitle.Size = new Size(585, 29);
             textBoxTitle.TabIndex = 18;
-            // 
-            // buttonRefresh
-            // 
-            buttonRefresh.BackColor = Color.Transparent;
-            buttonRefresh.BackgroundImage = Properties.Resources.material_symbols_refresh;
-            buttonRefresh.BackgroundImageLayout = ImageLayout.Stretch;
-            buttonRefresh.FlatAppearance.BorderSize = 0;
-            buttonRefresh.FlatStyle = FlatStyle.Flat;
-            buttonRefresh.Location = new Point(145, 7);
-            buttonRefresh.Name = "buttonRefresh";
-            buttonRefresh.Size = new Size(23, 23);
-            buttonRefresh.TabIndex = 19;
-            buttonRefresh.UseVisualStyleBackColor = false;
-            buttonRefresh.Click += buttonRefresh_Click;
             // 
             // MainForm
             // 
