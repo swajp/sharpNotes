@@ -47,6 +47,7 @@
             textBoxText = new TextBox();
             label2 = new Label();
             textBoxTitle = new TextBox();
+            buttonRefresh = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -152,6 +153,7 @@
             // panel3
             // 
             panel3.BackColor = Color.Transparent;
+            panel3.Controls.Add(buttonRefresh);
             panel3.Controls.Add(listViewNotes);
             panel3.Location = new Point(12, 46);
             panel3.Name = "panel3";
@@ -267,6 +269,20 @@
             textBoxTitle.Size = new Size(585, 29);
             textBoxTitle.TabIndex = 18;
             // 
+            // buttonRefresh
+            // 
+            buttonRefresh.BackColor = Color.Transparent;
+            buttonRefresh.BackgroundImage = Properties.Resources.material_symbols_refresh;
+            buttonRefresh.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonRefresh.FlatAppearance.BorderSize = 0;
+            buttonRefresh.FlatStyle = FlatStyle.Flat;
+            buttonRefresh.Location = new Point(145, 7);
+            buttonRefresh.Name = "buttonRefresh";
+            buttonRefresh.Size = new Size(23, 23);
+            buttonRefresh.TabIndex = 19;
+            buttonRefresh.UseVisualStyleBackColor = false;
+            buttonRefresh.Click += buttonRefresh_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -317,5 +333,6 @@
         private Button buttonDeleteNote;
         private ListView listViewNotes;
         private ColumnHeader columnHeader1;
+        private Button buttonRefresh;
     }
 }

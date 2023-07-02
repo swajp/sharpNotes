@@ -128,5 +128,21 @@ namespace sharpNotes
             }
             isCreatingNewNote = false;
         }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            if (listViewNotes.SelectedItems.Count > 0)
+            {
+                var note = notes[listViewNotes.SelectedIndices[0]];
+                LoadNotes();
+                var title = note.Title;
+                var text = note.Text;
+
+                panelNewNote.Visible = true;
+                textBoxTitle.Text = title;
+                textBoxText.Text = text;
+            }
+            else { panelNewNote.Visible = false; isCreatingNewNote = false; }
+        }
     }
 }

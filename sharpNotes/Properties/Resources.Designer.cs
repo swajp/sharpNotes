@@ -63,6 +63,16 @@ namespace sharpNotes.Properties {
         /// <summary>
         ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap material_symbols_refresh {
+            get {
+                object obj = ResourceManager.GetObject("material-symbols_refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap material_symbols_save {
             get {
                 object obj = ResourceManager.GetObject("material-symbols_save", resourceCulture);
