@@ -1,4 +1,9 @@
 # sharpNotes
+
+### Instalace
+- vytvořit databázi a tabulky pomocí 'database.txt'
+- přidat connection string do souboru 'SqlRepository.cs:15'
+
 ### Rychlo projekt ve WindowsForms
 ![sharpNotes - logo](https://github.com/swajp/sharpNotes/assets/65676574/7c43d37e-11e3-43ba-b164-edf8f41f34c8)
 
