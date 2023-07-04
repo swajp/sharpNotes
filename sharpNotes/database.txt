@@ -1,0 +1,18 @@
+﻿#VYTVOŘENÍ TABULKY PRO UŽIVATELÉ
+CREATE TABLE [dbo].[Users] (
+    [Id]           INT             IDENTITY (1, 1) NOT NULL,
+    [Username]     VARCHAR (50)    NOT NULL,
+    [PasswordHash] VARBINARY (MAX) NULL,
+    [PasswordSalt] VARBINARY (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    UNIQUE NONCLUSTERED ([Username] ASC)
+);
+
+#VYTVOŘENÍ TABULKY PRO POZNÁMKY
+CREATE TABLE [dbo].[Notes] (
+    [NoteId]  INT           IDENTITY (1, 1) NOT NULL,
+    [Title]   VARCHAR (MAX) NOT NULL,
+    [Text]    VARCHAR (MAX) NOT NULL,
+    [OwnerId] INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([NoteId] ASC)
+);
